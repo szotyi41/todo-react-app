@@ -1,0 +1,21 @@
+.todo-item {
+    border: 1px solid #333;
+    padding: 8px;
+    margin: 12px;
+}
+
+.todo-title {
+    display: block;
+}
+
+.todo-body {
+    display: block;
+}
+
+.todo-remove {
+    float: right;
+}
+
+.todo-remove:after {
+    content: 'x';
+}
