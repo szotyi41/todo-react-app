@@ -1,6 +1,11 @@
 import { request } from 'react-request-hook';
 
-const Api = {
+export const fetch = (response, success, error) => {
+    if (response.data) success(response)
+    if (response.error) error(response)
+}
+
+export const api = {
     getTodos: () => {
         return request({
             method: 'get',
@@ -13,13 +18,14 @@ const Api = {
             url: '/todos/' + id
         })
     },
-    addTodo: ({ title, body}) => {
+    addTodo: ({ title, body, tags }) => {
         return request({
             method: 'post',
             url: '/todos/',
             data: {
                 title: title,
-                body: body
+                body: body,
+                tags: tags
             }
         })
     },
@@ -30,5 +36,3 @@ const Api = {
         })
     }
 }
-
-export default Api;

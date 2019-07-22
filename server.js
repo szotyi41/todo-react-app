@@ -7,8 +7,8 @@ app.use(express.json());
 app.use(cors())
 
 let todos = [
-    {id: 1, title: 'Title', body: 'Body', completed: false},
-    {id: 2, title: 'Title 2', body: 'Body 2', completed: false}
+    {id: 1, title: 'Title', body: 'Body', completed: false, tags: ['children']},
+    {id: 2, title: 'Title 2', body: 'Body 2', completed: false, tags: ['house']}
 ];
 
 // Get todos
@@ -31,6 +31,7 @@ app.post('/todos/', (req, res) => {
         id: new Date().getTime().toString(),
         title: req.body.title,
         body: req.body.body,
+        tags: req.body.tags,
         completed: false
     })
     res.send(todos)

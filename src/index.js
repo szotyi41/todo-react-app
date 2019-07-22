@@ -5,6 +5,8 @@ import * as serviceWorker from './serviceWorker';
 import { RequestProvider } from 'react-request-hook';
 import axios from 'axios';
 
+import 'selectize/dist/css/selectize.css';
+import './FormElements.css';
 
 const axiosInstance = axios.create({
   baseURL: 'http://localhost:3001/',

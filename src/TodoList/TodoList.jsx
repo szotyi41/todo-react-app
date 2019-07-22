@@ -1,39 +1,60 @@
-import React, {useState, useEffect, useContext} from 'react';
+import React, { useEffect, useContext } from 'react';
 import { useResource } from 'react-request-hook';
-import Api from './../Api.js';
+import { api, fetch } from './../Api.js';
+import { TodosContext } from '../Context/TodosContext';
+
 import './TodoList.css';
-import { TodosContext } from '../Context/Todos';
 
 const TodoList = () => {
 
     const [todos, setTodos] = useContext(TodosContext)
 
-    const [removeTodoResponse, removeTodoRequest] = useResource(Api.removeTodo)
-    const [completeTodoResponse, completeTodoRequest] = useResource(Api.completeTodo)
+    const [removeTodoResponse, removeTodoRequest] = useResource(api.removeTodo)
+    const [completeTodoResponse, completeTodoRequest] = useResource(api.completeTodo)
     
     // Catch remove response
     useEffect(() => {
-        if (removeTodoResponse.data) {
-            setTodos(removeTodoResponse.data)
-        }
+        const response = removeTodoResponse
+        fetch(response, () => {
+            setTodos(response.data)
+        }, () => {
+            alert('Cannot remove todo: ' + response.error.message)  
+        })
     })
 
     // Catch complete response
     useEffect(() => {
-        if (completeTodoResponse.data) {
-            setTodos(completeTodoResponse.data)
-        }
+        const response = completeTodoResponse
+        fetch(response, () => {
+            setTodos(response.data)
+        }, () => {
+            alert('Cannot set todos status: ' + response.error.message)  
+        })
     })
 
     if (todos.length) {
         return (
             <div className="todos">
                 {todos.map(todo => 
-                    <div key={todo.id} className="todo-item">
-                        <div className="todo-title">{todo.title}</div>
-                        <div className="todo-body">{todo.body}</div>
-                        <div className="todo-complete" onClick={() => completeTodoRequest(todo.id)}>{todo.completed === true ? 'Pending' : 'Completed'}</div>
-                        <div className="todo-remove" onClick={() => removeTodoRequest(todo.id)}></div>
+                    <div key={todo.id} className={"todo-item " + ( todo.completed ? 'todo-completed' : 'todo-not-completed' )}>
+                        <div className="d-flex space-between">
+
+                            <div className="todo-left">
+                                <div className="todo-title">{todo.title}</div>
+                                <div className="todo-body">{todo.body}</div>
+                                <div className="todo-complete">{todo.completed === true ? 'Completed' : 'Pending'}</div>
+                                {todo.tags.map(tag => <div className="todo-tag">{tag}</div>)}
+                            </div>
+
+                            <div className="todo-right">
+                                <label className="switch">
+                                    <input type="checkbox" checked={todo.completed} onChange={() => completeTodoRequest(todo.id)}/>
+                                    <span className="slider round"></span>
+                                </label>
+                                <button className="button-red" onClick={() => removeTodoRequest(todo.id)}>Remove</button>
+                            </div>
+
+                        </div>
                     </div>
                 )}
             </div>

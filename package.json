@@ -13,6 +13,7 @@
     "react-redux": "^7.1.0",
     "react-request-hook": "^2.1.1",
     "react-scripts": "3.0.1",
+    "reactize-selectize": "0.0.3",
     "redux-observable": "^1.1.0"
   },
   "scripts": {

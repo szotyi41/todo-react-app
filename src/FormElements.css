@@ -1,0 +1,191 @@
+/*
+*
+*   Input fields
+*
+*/
+
+.input-block {
+  display: flex;
+  vertical-align: middle;
+  margin: 8px;
+}
+
+.input-block label {
+  width: 100px;
+  display: flex;
+  align-items: center;
+  vertical-align: middle;
+  font-weight: normal;
+  height: auto;
+  color: #666;
+}
+
+.input-prm {
+  display: block;
+  width: 286px;
+  border-radius: 4px;
+  transition: all 0.3s;
+  padding: 6px;
+  font-size: 16px;
+  font-weight: 300;
+  border: 1px solid #aaa;
+  outline: none;
+}
+
+textarea.input-prm {
+  min-height: 60px;
+  resize: vertical;
+}
+
+/*
+*
+*   Selectize
+*
+*/
+
+.selectize-control {
+  width: 100%;
+  max-width: 300px;
+  font-size: 16px;
+  font-weight: 300;
+}
+
+.selectize-input {
+  display: block;
+  border-radius: 4px;
+  transition: all 0.3s;
+  padding: 6px !important;
+  font-size: 16px;
+  font-weight: 300;
+  border: 1px solid #aaa;
+  outline: none;
+  resize: none;
+  box-shadow: none !important;
+}
+
+.selectize-input input {
+  font-size: 16px;
+  font-weight: 300;
+}
+
+.selectize-dropdown {
+  box-shadow: none;
+  border: 1px solid #aaa;
+}
+
+.selectize-dropdown .option {
+  font-size: 16px;
+}
+
+.selectize-dropdown .option.active {
+  background: #eee;
+}
+
+/*
+*
+*   Buttons
+*
+*/
+
+.button-blue {
+  display: block;
+  margin: 8px;
+  color: #fff;
+  border-radius: 4px;
+  background: #1b84fd;
+  transition: all 0.3s;
+  padding: 6px 18px;
+  font-size: 16px;
+  font-weight: 300;
+  border: none;
+  outline: none;
+}
+
+.button-blue:hover {
+  background: #4b9fff;
+  cursor: pointer;
+}
+
+.button-red {
+  display: block;
+  margin: 8px;
+  color: #fff;
+  border-radius: 4px;
+  background: red;
+  transition: all 0.3s;
+  padding: 6px 18px;
+  font-size: 16px;
+  font-weight: 300;
+  border: none;
+  outline: none;
+}
+
+.button-red:hover {
+  background: darkred;
+  cursor: pointer;
+}
+
+/*
+*
+*   Switch
+*
+*/
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: green;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px green;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
